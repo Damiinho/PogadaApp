@@ -9,7 +9,9 @@ const WeatherView = (props) => {
     return (
       <div>
         <p>
-          dane na godzinę {now.getHours()}:{now.getMinutes()}, {now.getDate()}.
+          dane na godzinę {now.getHours()}:
+          {now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes()},{" "}
+          {now.getDate()}.
           {now.getMonth() < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1}.
           {now.getFullYear()}
         </p>
