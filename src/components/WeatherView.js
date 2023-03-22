@@ -31,6 +31,8 @@ const WeatherView = (props) => {
             ? `0${sunset.getMinutes()}`
             : sunset.getMinutes()}
         </p>
+        <p>ciśnienie: {props.data.main.pressure} hPa</p>
+        <p>prędkość wiatru: {props.data.wind.speed} m/s</p>
       </div>
     );
   } else {
