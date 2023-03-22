@@ -27,10 +27,20 @@ class App extends Component {
       });
   };
 
+  handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      this.handleClickButton();
+    }
+  };
+
   render() {
     return (
       <>
-        <SearchInput value={this.state.value} change={this.handleChangeInput} />
+        <SearchInput
+          enter={this.handleKeyDown}
+          value={this.state.value}
+          change={this.handleChangeInput}
+        />
         <SearchButton click={this.handleClickButton} />
         {this.state.cityFromAPI ? (
           <WeatherView

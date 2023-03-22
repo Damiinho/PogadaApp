@@ -3,7 +3,12 @@ const SearchInput = (props) => {
   return (
     <lebel>
       Wpisz miasto:{" "}
-      <input type="text" onChange={props.change} value={props.value} />
+      <input
+        onKeyDown={props.enter}
+        type="text"
+        onChange={props.change}
+        value={props.value}
+      />
     </lebel>
   );
 };
