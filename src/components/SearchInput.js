@@ -3,7 +3,7 @@ const SearchInput = (props) => {
   return (
     <label className="App__input">
       <input
-        placeholder="Wyszukaj miejscowość"
+        placeholder="Wpisz miejscowość"
         onKeyDown={props.enter}
         type="text"
         onChange={props.change}

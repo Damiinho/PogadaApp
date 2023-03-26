@@ -1,4 +1,10 @@
 import React from "react";
+import sunriseIMG from "../img/sunrise.png";
+import sunsetIMG from "../img/sunset.png";
+import pressureIMG from "../img/pressure-gauge.png";
+import windIMG from "../img/wind.png";
+import cloudsIMG from "../img/clouds.png";
+import humidityIMG from "../img/humidity.png";
 
 const now = new Date();
 
@@ -6,19 +12,27 @@ const WeatherView = (props) => {
   if (props.data.cod === 200) {
     const sunrise = new Date(props.data.sys.sunrise * 1000);
     const sunset = new Date(props.data.sys.sunset * 1000);
+    const sunriseLocal = `${sunrise.getHours()}:${
+      sunrise.getMinutes() < 10
+        ? `0${sunrise.getMinutes()}`
+        : sunrise.getMinutes()
+    }`;
+    const sunsetLocal = `${sunset.getHours()}:${
+      sunset.getMinutes() < 10 ? `0${sunset.getMinutes()}` : sunset.getMinutes()
+    }`;
 
     let weatherCondition = () => {
       if (props.data.weather[0].main === "Thunderstorm") {
-        return "Burza";
+        return "burza";
       }
       if (props.data.weather[0].main === "Drizzle") {
-        return "Mżawka";
+        return "mżawka";
       }
       if (props.data.weather[0].main === "Rain") {
-        return "Deszcz";
+        return "deszcz";
       }
       if (props.data.weather[0].main === "Snow") {
-        return "Śnieg";
+        return "śnieg";
       }
       if (
         props.data.weather[0].main === "Mist" ||
@@ -26,93 +40,59 @@ const WeatherView = (props) => {
         props.data.weather[0].main === "Haze" ||
         props.data.weather[0].main === "Fog"
       ) {
-        return "Mgła";
+        return "mgła";
       }
       if (props.data.weather[0].main === "Dust") {
-        return "Kurz";
+        return "kurz";
       }
       if (props.data.weather[0].main === "Sand") {
-        return "Piasek";
+        return "piasek";
       }
       if (props.data.weather[0].main === "Ash") {
-        return "Popiół wulkaniczny";
+        return "popiół wulkaniczny";
       }
       if (props.data.weather[0].main === "Squall") {
-        return "Szkwał";
+        return "szkwał";
       }
       if (props.data.weather[0].main === "Tornado") {
-        return "Tornado";
+        return "tornado";
       }
       if (props.data.weather[0].main === "Clear") {
-        return "Bezchmurne niebo";
+        return "bezchmurne niebo";
       }
       if (props.data.weather[0].main === "Clouds") {
-        return "Pochmurno";
+        return "pochmurno";
       }
     };
     weatherCondition = weatherCondition();
 
     return (
       <div className="App__view">
-        <div className="App__view-time">
-          dane na godzinę {now.getHours()}:
-          {now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes()},{" "}
-          {now.getDate()}.
-          {now.getMonth() < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1}.
-          {now.getFullYear()}
-        </div>
+        <Time now={now} />
         <div className="App__view-title">
-          <h1>{props.data.name}</h1>
-          <div>
-            <img
-              src={`https://openweathermap.org/img/wn/${
-                props.data.weather[0].icon
-              }@2x.png`}
-              alt=""
-            />
-            <div>{weatherCondition}</div>
-          </div>
+          <h1>{props.city.toUpperCase()}</h1>
+          <Coordinates lat={props.data.coord.lat} lon={props.data.coord.lon} />
         </div>
         <div className="App__view-data">
-          <div className="App__view-coordinates">
-            {props.data.coord.lat}, {props.data.coord.lon} –
-            <a
-              href={`http://maps.google.com/maps?ll=${props.data.coord.lat},${
-                props.data.coord.lon
-              }&spn=0.1,0.1&t=p&q=${props.data.coord.lat},${
-                props.data.coord.lon
-              }`}
-            >
-              otwórz w Google Maps
-            </a>
+          <div className="App__view-data-general">
+            <div>
+              <Temp temp={props.data.main.temp} />
+              <TempFeelsLike temp={props.data.main.feels_like} />
+            </div>
+            <div>
+              <WeatherImg img={props.data.weather[0].icon} />
+              <div>{weatherCondition}</div>
+            </div>
           </div>
-          <div className="App__view-temp">
-            temperatura: {props.data.main.temp}°C
-          </div>
-          <div>temperatura odczuwalna: {props.data.main.feels_like}°C</div>
           <div className="App__view-sun">
-            <div className="App__view-sunrise">
-              wschód słońca: {sunrise.getHours()}:
-              {sunrise.getMinutes() < 10
-                ? `0${sunrise.getMinutes()}`
-                : sunrise.getMinutes()}
-            </div>
-
-            <div className="App__view-sunset">
-              zachód słońca: {sunset.getHours()}:
-              {sunset.getMinutes() < 10
-                ? `0${sunset.getMinutes()}`
-                : sunset.getMinutes()}
-            </div>
+            <Sunrise sunrise={sunriseLocal} />
+            <Sunset sunset={sunsetLocal} />
           </div>
-          <div className="App__view-pressure">
-            ciśnienie: {props.data.main.pressure} hPa
-          </div>
-          <div className="App__view-windspeed">
-            prędkość wiatru: {props.data.wind.speed} m/s
-          </div>
-          <div className="App__view-clouds">
-            Zachmurzenie: {props.data.clouds.all}%
+          <div className="App__view-details">
+            <Pressure pressure={props.data.main.pressure} />
+            <Windspeed speed={props.data.wind.speed} />
+            <Clouds all={props.data.clouds.all} />
+            <Humidity humidity={props.data.main.humidity} />
           </div>
         </div>
       </div>
@@ -120,6 +100,104 @@ const WeatherView = (props) => {
   } else {
     return <h3>Nie mamy w bazie miejscowości {props.city}</h3>;
   }
+};
+
+const Time = (props) => {
+  return (
+    <div className="App__view-time">
+      dane na godzinę {props.now.getHours()}:
+      {props.now.getMinutes() < 10
+        ? `0${props.now.getMinutes()}`
+        : props.now.getMinutes()}
+      , {props.now.getDate()}.
+      {props.now.getMonth() < 10
+        ? `0${props.now.getMonth() + 1}`
+        : props.now.getMonth() + 1}
+      .{props.now.getFullYear()}
+    </div>
+  );
+};
+
+const Coordinates = (props) => {
+  return (
+    <div className="App__view-coordinates">
+      (
+      <a
+        href={`http://maps.google.com/maps?ll=${props.lat},${
+          props.lon
+        }&spn=0.1,0.1&t=p&q=${props.lat},${props.lon}`}
+      >
+        znajdź w Google Maps
+      </a>
+      )
+    </div>
+  );
+};
+
+const Temp = (props) => {
+  return <div className="App__view-temp">{props.temp}°C</div>;
+};
+const TempFeelsLike = (props) => {
+  return (
+    <div className="App__view-temp-feels-like">odczuwalna: {props.temp}°C</div>
+  );
+};
+
+const WeatherImg = (props) => {
+  return (
+    <img src={`https://openweathermap.org/img/wn/${props.img}@2x.png`} alt="" />
+  );
+};
+
+const Sunrise = (props) => {
+  return (
+    <div className="App__view-sunrise">
+      <img src={sunriseIMG} alt="sunrise" />
+      <div>{props.sunrise}</div>
+      <div />
+    </div>
+  );
+};
+const Sunset = (props) => {
+  return (
+    <div className="App__view-sunset">
+      <img src={sunsetIMG} alt="sunset" /> <div>{props.sunset}</div>
+    </div>
+  );
+};
+
+const Pressure = (props) => {
+  return (
+    <div className="App__view-pressure">
+      <img src={pressureIMG} alt="" /> {props.pressure} hPa
+    </div>
+  );
+};
+
+const Windspeed = (props) => {
+  return (
+    <div className="App__view-windspeed">
+      <img src={windIMG} alt="wind" /> {props.speed} m/s
+    </div>
+  );
+};
+
+const Clouds = (props) => {
+  return (
+    <div className="App__view-clouds">
+      <img src={cloudsIMG} alt="clouds" />
+      {props.all}%
+    </div>
+  );
+};
+
+const Humidity = (props) => {
+  return (
+    <div className="App__view-humidity">
+      <img src={humidityIMG} alt="humidity" />
+      {props.humidity}%
+    </div>
+  );
 };
 
 export default WeatherView;

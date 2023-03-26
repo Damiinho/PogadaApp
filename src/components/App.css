@@ -8,12 +8,84 @@
 }
 
 body {
-  /* background-color: gray; */
+  background-image: url('../img/thunderstorm.jpg'), url('../img/rain.jpg');
+  background-position: center 0px;
+  background-size: 2000px;
+  background-repeat: no-repeat;
+  transition: 2.5s;
+}
+
+body.drizzle {
+  background-image: url('../img/drizzle.jpg');
+  transition: 2.5s;
+}
+
+body.rain {
+  background-image: url('../img/rain.jpg');
+  transition: 2.5s;
+}
+
+body.snow {
+  background-image: url('../img/snow.jpg');
+  transition: 2.5s;
+}
+
+body.rain {
+  background-image: url('../img/rain.jpg');
+  transition: 2.5s;
+}
+
+body.thunderstorm {
   background-image: url('../img/thunderstorm.jpg');
+  transition: 2.5s;
+}
+
+body.mist,
+body.smoke,
+body.haze,
+body.fog {
+  background-image: url('../img/fog.jpg');
+  transition: 2.5s;
+}
+
+body.dust,
+body.sand,
+body.ash {
+  background-image: url('../img/dust.jpg');
+  transition: 2.5s;
+}
+
+body.squall {
+  background-image: url('../img/squall.jpg');
+  transition: 2.5s;
+}
+
+body.tornado {
+  background-image: url('../img/tornado.jpg');
+  transition: 2.5s;
+}
+
+body.clear {
+  background-image: url('../img/clear.jpg');
+  transition: 2.5s;
+}
+
+body.clouds {
+  background-image: url('../img/clouds.jpg');
+  transition: 2.5s;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(215, 200, 255);
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .App {
-  background-color: #ffffff69;
+  background-color: #8b8a8a89;
   width: 400px;
   height: 600px;
   position: absolute;
@@ -25,6 +97,8 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  color: rgb(250, 235, 235);
+  text-shadow: 2px 2px black;
 }
 
 .App__search-component {
@@ -46,12 +120,22 @@ body {
   font-size: 20px;
   border-style: none;
   border-radius: 7px;
-  text-transform: uppercase;
   cursor: pointer;
+  background-color: rgb(231, 231, 231);
+  transition: 0.3s;
+}
+
+.App__button:hover {
+  background-color: rgb(141, 141, 141);
+}
+
+.App__button:active {
+  color: rgb(87, 87, 87);
 }
 
 .App__view {
   margin-top: 10px;
+  width: 320px;
 }
 
 .App__view-time {
@@ -59,25 +143,102 @@ body {
 }
 
 .App__view-title {
-  margin: 50px 30px;
+  margin: 40px 0 0 0;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
   justify-content: space-between;
   align-items: center;
 }
 
 .App__view-title h1 {
-
   letter-spacing: 2px;
-}
-
-.App__view-title img {
-  width: 70px;
 }
 
 .App__view-data {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
+}
+
+.App__view-data-general {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30px;
+}
+
+.App__view-temp {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.App__view-sun {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 17px;
+}
+
+.App__view-sun img {
+  width: 70px;
+}
+
+.App__view-details {
+  margin: 10px 30px 0;
+  background-color: rgba(101, 102, 107, 0.363);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 0 15px 15px 15px;
+}
+
+
+.App__view-pressure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.App__view-pressure img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.App__view-windspeed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.App__view-windspeed img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.App__view-clouds {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.App__view-clouds img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.App__view-humidity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.App__view-humidity img {
+  width: 30px;
+  margin-right: 10px;
 }

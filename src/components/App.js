@@ -13,6 +13,14 @@ class App extends Component {
     confirmedCity: "",
   };
 
+  componentDidUpdate() {
+    if (this.state.cityFromAPI) {
+      if (this.state.cityFromAPI.cod === 200) {
+        document.body.classList = this.state.cityFromAPI.weather[0].main.toLowerCase();
+      }
+    }
+  }
+
   handleChangeInput = (e) => {
     this.setState({ value: e.target.value });
   };
@@ -24,8 +32,14 @@ class App extends Component {
     fetch(API)
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ cityFromAPI: data, confirmedCity: this.state.value });
+        this.setState({
+          cityFromAPI: data,
+          confirmedCity: this.state.value,
+          value: "",
+        });
       });
+
+    document.body.classList = `${this.state.confirmedCity}`;
   };
 
   handleKeyDown = (e) => {
