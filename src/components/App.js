@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchButton from "./SearchButton";
 import SearchInput from "./SearchInput";
 import WeatherView from "./WeatherView";
+import "./App.css";
 
 const APIKey = "c856aa7be41ac7238f8c2b7f7f39306e";
 
@@ -35,20 +36,22 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <SearchInput
-          enter={this.handleKeyDown}
-          value={this.state.value}
-          change={this.handleChangeInput}
-        />
-        <SearchButton click={this.handleClickButton} />
+      <div className="App">
+        <div className="App__search-component">
+          <SearchInput
+            enter={this.handleKeyDown}
+            value={this.state.value}
+            change={this.handleChangeInput}
+          />
+          <SearchButton click={this.handleClickButton} />
+        </div>
         {this.state.cityFromAPI ? (
           <WeatherView
             data={this.state.cityFromAPI}
             city={this.state.confirmedCity}
           />
         ) : null}
-      </>
+      </div>
     );
   }
 }

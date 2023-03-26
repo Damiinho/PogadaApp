@@ -1,15 +1,15 @@
 import React from "react";
 const SearchInput = (props) => {
   return (
-    <lebel>
-      Wpisz miasto:{" "}
+    <label className="App__input">
       <input
+        placeholder="Wyszukaj miejscowość"
         onKeyDown={props.enter}
         type="text"
         onChange={props.change}
         value={props.value}
       />
-    </lebel>
+    </label>
   );
 };
 
