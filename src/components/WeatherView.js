@@ -73,6 +73,7 @@ const WeatherView = (props) => {
           <h1>{props.city.toUpperCase()}</h1>
           <Coordinates lat={props.data.coord.lat} lon={props.data.coord.lon} />
         </div>
+        {}
         <div className="App__view-data">
           <div className="App__view-data-general">
             <div>
@@ -98,7 +99,17 @@ const WeatherView = (props) => {
       </div>
     );
   } else {
-    return <h3>Nie mamy w bazie miejscowości {props.city}</h3>;
+    return <NotInDatabase city={props.city} />;
+  }
+};
+
+const NotInDatabase = (props) => {
+  if (props.city) {
+    return (
+      <h3 style={{ marginTop: 40 }}>Brak „{props.city}” w bazie danych</h3>
+    );
+  } else {
+    return null;
   }
 };
 

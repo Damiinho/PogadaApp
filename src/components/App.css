@@ -87,7 +87,7 @@ a:hover {
 .App {
   background-color: #8b8a8a89;
   width: 400px;
-  height: 600px;
+  min-height: 600px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -99,6 +99,13 @@ a:hover {
   text-align: center;
   color: rgb(250, 235, 235);
   text-shadow: 2px 2px black;
+  transition: 0.5s
+}
+
+.App.inactive {
+  min-height: 100px;
+  height: 100px;
+  transition: 0.5s
 }
 
 .App__search-component {
@@ -192,6 +199,7 @@ a:hover {
   justify-content: space-between;
   border-radius: 10px;
   padding: 0 15px 15px 15px;
+  margin-bottom: 30px;
 }
 
 

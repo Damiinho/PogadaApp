@@ -17,6 +17,9 @@ class App extends Component {
     if (this.state.cityFromAPI) {
       if (this.state.cityFromAPI.cod === 200) {
         document.body.classList = this.state.cityFromAPI.weather[0].main.toLowerCase();
+        document.querySelector(".App").classList.remove("inactive");
+      } else {
+        document.querySelector(".App").classList.add("inactive");
       }
     }
   }
@@ -38,8 +41,6 @@ class App extends Component {
           value: "",
         });
       });
-
-    document.body.classList = `${this.state.confirmedCity}`;
   };
 
   handleKeyDown = (e) => {
@@ -50,7 +51,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App inactive">
         <div className="App__search-component">
           <SearchInput
             enter={this.handleKeyDown}
