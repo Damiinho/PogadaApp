@@ -44,6 +44,10 @@ self.__precacheManifest = [
     "url": "/PogadaApp/static/media/thunderstorm.1c75d049.jpg"
   },
   {
+    "revision": "e08120d2aeaceea385de39f88a396577",
+    "url": "/PogadaApp/static/media/dust.e08120d2.jpg"
+  },
+  {
     "revision": "70aac00f7a226173ce4172139345cd47",
     "url": "/PogadaApp/static/media/squall.70aac00f.jpg"
   },
@@ -52,16 +56,12 @@ self.__precacheManifest = [
     "url": "/PogadaApp/static/media/clouds.eb8311eb.jpg"
   },
   {
-    "revision": "e08120d2aeaceea385de39f88a396577",
-    "url": "/PogadaApp/static/media/dust.e08120d2.jpg"
+    "revision": "0ca0231c336a6dc09a69b6db1de65ff0",
+    "url": "/PogadaApp/static/media/drizzle.0ca0231c.jpg"
   },
   {
     "revision": "7f0e756fd027ab2484d4ae2a2e8567c9",
     "url": "/PogadaApp/static/media/tornado.7f0e756f.jpg"
-  },
-  {
-    "revision": "0ca0231c336a6dc09a69b6db1de65ff0",
-    "url": "/PogadaApp/static/media/drizzle.0ca0231c.jpg"
   },
   {
     "revision": "17ae114db956a9bcf4a8e1071841ab82",
