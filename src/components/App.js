@@ -6,12 +6,14 @@ import "./App.css";
 import More from "./More";
 
 const APIKey = "c856aa7be41ac7238f8c2b7f7f39306e";
-
 class App extends Component {
   state = {
     value: "",
     cityFromAPI: null,
     confirmedCity: "",
+    lat: null,
+    lon: null,
+    cityFromCoordinatesAPI: null,
     moreComponentText: (
       <p>
         ⮚
@@ -83,6 +85,18 @@ class App extends Component {
           value: "",
         });
       });
+    const APIforCoordinates = `
+      https://api.openweathermap.org/geo/1.0/direct?q=${
+        this.state.value
+      }&appid=${APIKey}`;
+
+    fetch(APIforCoordinates)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length > 0) {
+          this.setState({ lat: data[0].lat, lon: data[0].lon });
+        } else this.setState({ lat: null, lon: null });
+      });
 
     const moreElement = document.querySelector(".App__more-component");
     if (moreElement) {
@@ -113,30 +127,38 @@ class App extends Component {
         this.setState({
           moreComponentText: <p>na następne dni? kliknij</p>,
         });
-      }, 200);
+      }, 100);
     }
     this.setState({ isElementHover: true });
   };
   handleMouseLeave = () => {
     if (!this.state.moreElementActive) {
-      this.setState({
-        moreComponentText: (
-          <p>
-            ⮚<br />⮚<br />⮚
-          </p>
-        ),
-      });
+      setTimeout(() => {
+        this.setState({
+          moreComponentText: (
+            <p>
+              ⮚<br />⮚<br />⮚
+            </p>
+          ),
+        });
+      }, 100);
     }
     this.setState({ isElementHover: false });
   };
 
-  handleOnClick = () => {
+  handleOnMoreClick = () => {
     document.querySelector(".App__more-component").classList.toggle("active");
     this.setState({ moreElementActive: !this.state.moreElementActive });
     if (!this.state.moreElementActive) {
-      setTimeout(() => {
-        this.setState({ moreComponentText: "jest aktywny" });
-      }, 100);
+      const API = `https://api.openweathermap.org/data/2.5/forecast?lat=${
+        this.state.lat
+      }&lon=${this.state.lon}&appid=${APIKey}&units=metric`;
+
+      fetch(API)
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({ cityFromCoordinatesAPI: data });
+        });
     }
     if (this.state.moreElementActive) {
       setTimeout(() => {
@@ -160,10 +182,13 @@ class App extends Component {
       <div className="App inactive">
         {this.state.cityFromAPI && this.state.cityFromAPI.cod === 200 ? (
           <More
-            click={this.handleOnClick}
+            click={this.handleOnMoreClick}
             mouseLeave={this.handleMouseLeave}
             mouseEnter={this.handleMouseEnter}
             content={this.state.moreComponentText}
+            city={this.state.confirmedCity}
+            data={this.state.cityFromCoordinatesAPI}
+            active={this.state.moreElementActive}
           />
         ) : null}
 
