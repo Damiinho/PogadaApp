@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap");
 
 * {
   margin: 0;
@@ -8,35 +8,35 @@
 }
 
 body {
-  background-image: url('../img/thunderstorm.jpg'), url('../img/rain.jpg');
+  background-image: url("../img/thunderstorm.jpg"), url("../img/rain.jpg");
   background-position: center 0px;
-  background-size: 2000px;
+  background-size: 2200px;
   background-repeat: no-repeat;
   transition: 2.5s;
 }
 
 body.drizzle {
-  background-image: url('../img/drizzle.jpg');
+  background-image: url("../img/drizzle.jpg");
   transition: 2.5s;
 }
 
 body.rain {
-  background-image: url('../img/rain.jpg');
+  background-image: url("../img/rain.jpg");
   transition: 2.5s;
 }
 
 body.snow {
-  background-image: url('../img/snow.jpg');
+  background-image: url("../img/snow.jpg");
   transition: 2.5s;
 }
 
 body.rain {
-  background-image: url('../img/rain.jpg');
+  background-image: url("../img/rain.jpg");
   transition: 2.5s;
 }
 
 body.thunderstorm {
-  background-image: url('../img/thunderstorm.jpg');
+  background-image: url("../img/thunderstorm.jpg");
   transition: 2.5s;
 }
 
@@ -44,34 +44,34 @@ body.mist,
 body.smoke,
 body.haze,
 body.fog {
-  background-image: url('../img/fog.jpg');
+  background-image: url("../img/fog.jpg");
   transition: 2.5s;
 }
 
 body.dust,
 body.sand,
 body.ash {
-  background-image: url('../img/dust.jpg');
+  background-image: url("../img/dust.jpg");
   transition: 2.5s;
 }
 
 body.squall {
-  background-image: url('../img/squall.jpg');
+  background-image: url("../img/squall.jpg");
   transition: 2.5s;
 }
 
 body.tornado {
-  background-image: url('../img/tornado.jpg');
+  background-image: url("../img/tornado.jpg");
   transition: 2.5s;
 }
 
 body.clear {
-  background-image: url('../img/clear.jpg');
+  background-image: url("../img/clear.jpg");
   transition: 2.5s;
 }
 
 body.clouds {
-  background-image: url('../img/clouds.jpg');
+  background-image: url("../img/clouds.jpg");
   transition: 2.5s;
 }
 
@@ -99,17 +99,18 @@ a:hover {
   text-align: center;
   color: rgb(250, 235, 235);
   text-shadow: 2px 2px black;
-  transition: 0.5s
+  transition: 0.5s;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
 }
 
 .App.inactive {
   min-height: 100px;
   height: 100px;
-  transition: 0.5s
+  transition: 0.5s;
 }
 
 .App__search-component {
-  margin-top: 30px
+  margin-top: 30px;
 }
 
 .App__input input {
@@ -118,7 +119,7 @@ a:hover {
   height: 40px;
   font-size: 20px;
   border-radius: 7px;
-  padding: 5px
+  padding: 5px;
 }
 
 .App__button {
@@ -140,9 +141,41 @@ a:hover {
   color: rgb(87, 87, 87);
 }
 
+.App__more-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  width: 60px;
+  position: absolute;
+  top: 50%;
+  left: 330px;
+  font-size: 30px;
+  background-color: rgba(101, 102, 107, 0.363);
+  border-radius: 30px;
+  text-shadow: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.App__more-component:hover {
+  background-color: black;
+  width: 200px;
+  left: 330px;
+}
+
+.App__more-component.active {
+  background-color: green;
+  left: -40px;
+  top: 120px;
+  width: 480px;
+  height: 400px;
+}
+
 .App__view {
   margin-top: 10px;
-  width: 320px;
+  min-width: 320px;
+  transition: 1.5s;
 }
 
 .App__view-time {
@@ -150,21 +183,29 @@ a:hover {
 }
 
 .App__view-title {
-  margin: 40px 0 0 0;
+  margin: 30px auto 0;
+  min-width: 200px;
+  padding: 10px;
+  width: min-content;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(31, 31, 31, 0.363);
+  border-radius: 10px;
 }
 
 .App__view-title h1 {
   letter-spacing: 2px;
+  line-height: 43px;
 }
 
 .App__view-data {
   display: flex;
   flex-direction: column;
+  width: 320px;
+  margin: 0 auto;
 }
 
 .App__view-data-general {
@@ -172,6 +213,10 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   margin: 0 30px;
+}
+
+.App__view-data-general div:nth-of-type(2) div {
+  font-size: 16px;
 }
 
 .App__view-temp {
@@ -192,7 +237,7 @@ a:hover {
 
 .App__view-details {
   margin: 10px 30px 0;
-  background-color: rgba(101, 102, 107, 0.363);
+  background-color: rgba(31, 31, 31, 0.363);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -201,7 +246,6 @@ a:hover {
   padding: 0 15px 15px 15px;
   margin-bottom: 30px;
 }
-
 
 .App__view-pressure {
   display: flex;
