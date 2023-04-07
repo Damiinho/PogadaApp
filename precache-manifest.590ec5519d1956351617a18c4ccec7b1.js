@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "65b46c59eee1a2d60e05",
-    "url": "/PogadaApp/static/css/main.af08824d.chunk.css"
+    "revision": "78990596787eb9536c8a",
+    "url": "/PogadaApp/static/css/main.668dc6d1.chunk.css"
   },
   {
-    "revision": "65b46c59eee1a2d60e05",
-    "url": "/PogadaApp/static/js/main.65b46c59.chunk.js"
+    "revision": "78990596787eb9536c8a",
+    "url": "/PogadaApp/static/js/main.78990596.chunk.js"
   },
   {
     "revision": "12515d38c4eb5e955f9c",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/PogadaApp/static/media/fog.ef7c8c8b.jpg"
   },
   {
-    "revision": "48e3d9c52f77b2ce14a48601cd9ffa19",
+    "revision": "94160cdb90f3836fbff090e4e702e9d1",
     "url": "/PogadaApp/index.html"
   }
 ];
