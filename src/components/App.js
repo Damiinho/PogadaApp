@@ -24,6 +24,38 @@ class App extends Component {
     ),
     moreElementActive: false,
     isElementHover: false,
+    isWeekActive: false,
+  };
+
+  componentDidMount() {
+    document
+      .getElementById("root")
+      .addEventListener("click", this.handleDocumentClick);
+  }
+  componentWillUnmount() {
+    document
+      .getElementById("root")
+      .removeEventListener("click", this.handleDocumentClick);
+  }
+
+  handleDocumentClick = (e) => {
+    if (
+      this.state.moreElementActive &&
+      e.target === document.getElementById("root")
+    ) {
+      this.setState({
+        moreElementActive: false,
+        moreComponentText: (
+          <p>
+            ⮚
+            <br />
+            ⮚
+            <br />⮚
+          </p>
+        ),
+      });
+      document.querySelector(".App__more-component").classList.remove("active");
+    }
   };
 
   componentDidUpdate() {
@@ -43,7 +75,7 @@ class App extends Component {
         appViewElement.style.opacity = 0;
 
         if (h1Element.offsetHeight > 1) {
-          appViewElement.style.opacity = 1;
+          appViewElement.style.opacity = "1";
           if (generalSecondDivElement.offsetHeight > 22) {
             appElement.style.height = "622px";
           }
@@ -132,7 +164,12 @@ class App extends Component {
     this.setState({ isElementHover: true });
   };
   handleMouseLeave = () => {
-    if (!this.state.moreElementActive) {
+    if (
+      !this.state.moreElementActive &&
+      !document
+        .querySelector(".App__more-component")
+        .classList.contains("active")
+    ) {
       setTimeout(() => {
         this.setState({
           moreComponentText: (
@@ -147,9 +184,9 @@ class App extends Component {
   };
 
   handleOnMoreClick = () => {
-    document.querySelector(".App__more-component").classList.toggle("active");
-    this.setState({ moreElementActive: !this.state.moreElementActive });
     if (!this.state.moreElementActive) {
+      document.querySelector(".App__more-component").classList.add("active");
+      this.setState({ moreElementActive: true });
       const API = `https://api.openweathermap.org/data/2.5/forecast?lat=${
         this.state.lat
       }&lon=${this.state.lon}&appid=${APIKey}&units=metric`;
@@ -161,19 +198,7 @@ class App extends Component {
         });
     }
     if (this.state.moreElementActive) {
-      setTimeout(() => {
-        if (this.state.isElementHover)
-          this.setState({ moreComponentText: <p>na następne dni? kliknij</p> });
-        if (!this.state.isElementHover) {
-          this.setState({
-            moreComponentText: (
-              <p>
-                ⮚<br />⮚<br />⮚
-              </p>
-            ),
-          });
-        }
-      }, 100);
+      this.setState({ isWeekActive: !this.state.isWeekActive });
     }
   };
 
@@ -189,6 +214,7 @@ class App extends Component {
             city={this.state.confirmedCity}
             data={this.state.cityFromCoordinatesAPI}
             active={this.state.moreElementActive}
+            isWeekActive={this.state.isWeekActive}
           />
         ) : null}
 

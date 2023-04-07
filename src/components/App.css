@@ -84,6 +84,11 @@ a:hover {
   text-decoration: underline;
 }
 
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
 .App {
   background-color: #8b8a8a89;
   width: 400px;
@@ -174,10 +179,16 @@ a:hover {
   justify-content: flex-start;
 }
 
+.App__more-component__title {
+  font-weight: bold;
+  text-shadow: 2px 2px rgb(88, 88, 88);
+  margin-top: 15px;
+}
+
 .App__more-component__hours {
   display: flex;
   width: 800px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .App__more-component__hour {
@@ -247,6 +258,11 @@ a:hover {
   align-items: center;
   justify-content: center;
   padding-right: 4px;
+}
+
+.App__more-component__footer {
+  margin-top: 5px;
+  font-size: 17px;
 }
 
 .App__view {

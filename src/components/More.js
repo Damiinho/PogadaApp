@@ -15,13 +15,23 @@ const More = (props) => {
     >
       {props.active && props.data !== null ? (
         <>
-          <div className="App__more-component__title">najbliższa doba</div>
-          <div className="App__more-component__hours">
-            {props.data.list.slice(0, 8).map((item, index) => (
-              <Hour key={index} data={item} />
-            ))}
+          <div className="App__more-component__title">
+            {props.isWeekActive
+              ? "TYDZIEŃ (KLIKNIJ ABY ZMIENIĆ NA DOBĘ)"
+              : "DOBA (KLIKNIJ ABY ZMIENIĆ NA TYDZIEŃ)"}
           </div>
-          <NextDays />
+          {props.isWeekActive ? (
+            "tu będzie widok tygodnia"
+          ) : (
+            <div className="App__more-component__hours">
+              {props.data.list.slice(0, 8).map((item, index) => (
+                <Hour key={index} data={item} />
+              ))}
+            </div>
+          )}
+          <div className="App__more-component__footer">
+            (kliknij poza element aby zamknąć)
+          </div>
         </>
       ) : (
         props.content
@@ -144,17 +154,6 @@ const Pressure = (props) => (
   <div className="pressure" title="ciśnienie">
     {/* <img src={pressureIMG} alt="pressure" /> */}
     {props.pressure}hPA
-  </div>
-);
-const handleNextDaysClick = () => {
-  document
-    .querySelector(".App__more-component__days")
-    .classList.toggle("active");
-};
-
-const NextDays = () => (
-  <div className="App__more-component__days" onClick={handleNextDaysClick}>
-    Pogoda na następne dni (rozwiń)
   </div>
 );
 
