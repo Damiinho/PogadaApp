@@ -165,27 +165,88 @@ a:hover {
 }
 
 .App__more-component.active {
-  background-color: green;
-  left: -80px;
+  background-color: rgba(0, 0, 0, 0.747);
+  left: -200px;
   top: 120px;
-  width: 560px;
-  height: 400px;
+  width: 800px;
+  height: 470px;
   flex-direction: column;
   justify-content: flex-start;
 }
 
 .App__more-component__hours {
   display: flex;
-  width: 560px;
-  flex-direction: row;
-  justify-content: space-evenly;
+  width: 800px;
+  margin-top: 10px;
 }
 
 .App__more-component__hour {
   display: flex;
   flex-direction: column;
+  width: 100px;
   font-size: 18px;
-  width: 60px;
+  border-right: solid 1px white;
+}
+
+.App__more-component__hour:nth-of-type(8) {
+  border-right: none;
+}
+
+.App__more-component__hour div {
+  height: 40px;
+}
+
+.App__more-component__hour div.hour {
+  font-size: 25px;
+}
+
+.App__more-component__hour div.temp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App__more-component__hour div.temp img {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  top: 1px;
+}
+
+.App__more-component__hour div.weather {
+  font-size: 13px;
+  height: 80px
+}
+
+.App__more-component__hour div.weather img {
+  width: 70px;
+  height: 70px;
+}
+
+.App__more-component__hour div.clouds,
+.App__more-component__hour div.wind,
+.App__more-component__hour div.pressure,
+.App__more-component__hour div.humidity {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App__more-component__hour div.clouds img,
+.App__more-component__hour div.wind img,
+.App__more-component__hour div.pressure img,
+.App__more-component__hour div.humidity img {
+  height: 18px;
+  width: 24px;
+  padding-right: 6px;
+}
+
+.App__more-component__hour div.wind div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 4px;
 }
 
 .App__view {

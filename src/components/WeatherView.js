@@ -58,7 +58,7 @@ const WeatherView = (props) => {
         return "tornado";
       }
       if (props.data.weather[0].main === "Clear") {
-        return "bezchmurne niebo";
+        return "bezchmurnie";
       }
       if (props.data.weather[0].main === "Clouds") {
         return "pochmurno";
