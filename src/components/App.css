@@ -13,6 +13,7 @@ body {
   background-size: 2200px;
   background-repeat: no-repeat;
   transition: 2.5s;
+  overflow: hidden
 }
 
 body.drizzle {
@@ -85,8 +86,9 @@ a:hover {
 }
 
 #root {
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
+  overflow: hidden;
 }
 
 .App {
