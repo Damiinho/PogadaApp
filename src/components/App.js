@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import SearchButton from "./SearchButton";
 import SearchInput from "./SearchInput";
 import WeatherView from "./WeatherView";
-import "./App.css";
 import More from "./More";
 
+import "./App.css";
 const APIKey = "c856aa7be41ac7238f8c2b7f7f39306e";
 class App extends Component {
   state = {
@@ -15,12 +15,11 @@ class App extends Component {
     lon: null,
     cityFromCoordinatesAPI: null,
     moreComponentText: (
-      <p>
-        ⮚
-        <br />
-        ⮚
-        <br />⮚
-      </p>
+      <>
+        <p>24 / 7</p>
+        <p>pogoda</p>
+        <p>(kliknij)</p>
+      </>
     ),
     moreElementActive: false,
     isElementHover: false,
@@ -46,12 +45,11 @@ class App extends Component {
       this.setState({
         moreElementActive: false,
         moreComponentText: (
-          <p>
-            ⮚
-            <br />
-            ⮚
-            <br />⮚
-          </p>
+          <>
+            <p>24 / 7</p>
+            <p>pogoda</p>
+            <p>(kliknij)</p>
+          </>
         ),
       });
       document.querySelector(".App__more-component").classList.remove("active");
@@ -136,12 +134,11 @@ class App extends Component {
       this.setState({
         moreElementActive: false,
         moreComponentText: (
-          <p>
-            ⮚
-            <br />
-            ⮚
-            <br />⮚
-          </p>
+          <>
+            <p>24 / 7</p>
+            <p>pogoda</p>
+            <p>(kliknij)</p>
+          </>
         ),
       });
     }
@@ -157,7 +154,13 @@ class App extends Component {
     if (!this.state.moreElementActive) {
       setTimeout(() => {
         this.setState({
-          moreComponentText: <p>na następne dni? kliknij</p>,
+          moreComponentText: (
+            <>
+              <p>24 / 7</p>
+              <p>pogoda</p>
+              <p>(kliknij)</p>
+            </>
+          ),
         });
       }, 100);
     }
@@ -173,9 +176,11 @@ class App extends Component {
       setTimeout(() => {
         this.setState({
           moreComponentText: (
-            <p>
-              ⮚<br />⮚<br />⮚
-            </p>
+            <>
+              <p>24 / 7</p>
+              <p>pogoda</p>
+              <p>(kliknij)</p>
+            </>
           ),
         });
       }, 100);

@@ -163,23 +163,76 @@ a:hover {
   text-shadow: none;
   cursor: pointer;
   transition: 0.5s;
+  flex-direction: column;
 }
+
 
 .App__more-component:hover {
   background-color: black;
-  width: 200px;
+  width: 140px;
   left: 330px;
 }
 
 .App__more-component.active {
-  background-color: rgba(0, 0, 0, 0.747);
+  background-color: rgba(146, 146, 146, 0.89);
+  /* background-color: rgba(31, 31, 31, 0.781); */
+
   left: -200px;
   top: 120px;
   width: 800px;
   height: 470px;
   flex-direction: column;
   justify-content: flex-start;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
 }
+
+.App__more-component>p:first-of-type {
+  transform: rotate(90deg);
+  white-space: nowrap;
+  font-weight: bold;
+  transition: 1s;
+  font-size: 35px;
+}
+
+.App__more-component:hover>p:first-of-type {
+  transform: rotate(0deg);
+}
+
+.App__more-component>p:nth-of-type(2),
+.App__more-component>p:nth-of-type(3) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: 1s;
+}
+
+.App__more-component>p:nth-of-type(2) {
+  top: 10px;
+  font-size: 25px;
+}
+
+.App__more-component>p:nth-of-type(3) {
+  top: 100px;
+  font-size: 20px;
+}
+
+.App__more-component:hover>p:nth-of-type(2),
+.App__more-component:hover>p:nth-of-type(3) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}
+
+
+
+
+.App__more-component .App__more-component-247img {
+  width: 100px;
+  transform: rotate(90deg);
+}
+
 
 .App__more-component__title {
   font-weight: bold;
@@ -228,12 +281,15 @@ a:hover {
 
 .App__more-component__hour div.weather {
   font-size: 13px;
-  height: 80px
+  height: 95px
 }
 
 .App__more-component__hour div.weather img {
+  margin: 5px 0;
   width: 70px;
   height: 70px;
+  border-radius: 50%;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
 }
 
 .App__more-component__hour div.clouds,
@@ -263,7 +319,6 @@ a:hover {
 }
 
 .App__more-component__footer {
-  margin-top: 5px;
   font-size: 17px;
 }
 
