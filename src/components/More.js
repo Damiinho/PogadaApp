@@ -33,9 +33,18 @@ const More = (props) => {
               ))}
             </div>
           )}
-          <div className="App__more-component__footer">
-            (kliknij poza element aby zamknąć)
-          </div>
+          {props.isSmallScreen ? (
+            <div
+              className="App__more-component__footer"
+              onClick={props.closeClick}
+            >
+              <p>ZAMKNIJ</p>
+            </div>
+          ) : (
+            <div className="App__more-component__footer">
+              (kliknij poza element aby zamknąć)
+            </div>
+          )}
         </>
       ) : (
         props.content
@@ -141,10 +150,11 @@ const Weather = (props) => {
 
   return (
     <div className="weather">
-      {weatherCondition}{" "}
+      <p>{weatherCondition} </p>
       <img
         src={`https://openweathermap.org/img/wn/${props.icon}@2x.png`}
-        alt="pogoda"
+        alt={weatherCondition}
+        title={weatherCondition}
       />
     </div>
   );

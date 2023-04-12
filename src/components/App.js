@@ -25,18 +25,31 @@ class App extends Component {
     isElementHover: false,
     isWeekActive: false,
     isDetailsActive: false,
+    isSmallScreen: window.innerWidth < 1050,
+    isMobileScreen: window.innerWidth < 410,
+    isAppViewActive: true,
   };
 
   componentDidMount() {
     document
       .getElementById("root")
       .addEventListener("click", this.handleDocumentClick);
+    window.addEventListener("resize", this.handleResize);
   }
   componentWillUnmount() {
     document
       .getElementById("root")
       .removeEventListener("click", this.handleDocumentClick);
+
+    window.addEventListener("resize", this.handleResize);
   }
+
+  handleResize = () => {
+    this.setState({
+      isSmallScreen: window.innerWidth < 1050,
+      isMobileScreen: window.innerWidth < 410,
+    });
+  };
 
   handleDocumentClick = (e) => {
     if (
@@ -62,14 +75,37 @@ class App extends Component {
       document.querySelector(".App__view-details").classList.remove("active");
       this.setState({ isDetailsActive: false });
     }
+
+    if (
+      e.target === document.querySelector("div.App__more-component__footer") ||
+      document.querySelector("div.App__more-component__footer p")
+    ) {
+      if (this.state.isMobileScreen && !this.state.isAppViewActive) {
+        document.querySelector(".App__view").style.display = "block";
+        this.setState({ isAppViewActive: true });
+      }
+
+      this.setState({
+        moreElementActive: false,
+        moreComponentText: (
+          <>
+            <p>24 h</p>
+            <p>pogoda</p>
+            <p>(kliknij)</p>
+          </>
+        ),
+      });
+      document.querySelector(".App__more-component").classList.remove("active");
+    }
   };
 
   componentDidUpdate() {
     if (this.state.cityFromAPI) {
       const appElement = document.querySelector(".App");
       const appViewElement = document.querySelector(".App__view");
-      appElement.style.height = "100px";
-
+      if (!this.state.isMobileScreen) {
+        appElement.style.height = "100px";
+      }
       if (this.state.cityFromAPI.cod === 200) {
         const h1Element = document.querySelector(".App__view-title h1");
         const generalSecondDivElement = document.querySelector(
@@ -80,20 +116,25 @@ class App extends Component {
 
         appViewElement.style.opacity = 0;
 
-        if (h1Element.offsetHeight > 1) {
+        if (this.state.isMobileScreen) {
           appViewElement.style.opacity = "1";
-          if (generalSecondDivElement.offsetHeight > 22) {
+          appElement.style.height = "";
+        }
+
+        if (h1Element.offsetHeight > 1 && !this.state.isMobileScreen) {
+          appViewElement.style.opacity = "1";
+          if (generalSecondDivElement.offsetHeight > 20) {
             appElement.style.height = "622px";
           }
         }
 
-        if (h1Element.offsetHeight > 43) {
+        if (h1Element.offsetHeight > 43 && !this.state.isMobileScreen) {
           appElement.style.height = "643px";
           if (generalSecondDivElement.offsetHeight > 22) {
             appElement.style.height = "665px";
           }
         }
-        if (h1Element.offsetHeight > 86) {
+        if (h1Element.offsetHeight > 86 && !this.state.isMobileScreen) {
           appElement.style.height = "686px";
           if (generalSecondDivElement.offsetHeight > 22) {
             appElement.style.height = "708px";
@@ -219,6 +260,10 @@ class App extends Component {
       document.querySelector(".App__view-details").classList.remove("active");
       this.setState({ isDetailsActive: false });
     }
+    if (this.state.isMobileScreen && this.state.isAppViewActive) {
+      document.querySelector(".App__view").style.display = "none";
+      this.setState({ isAppViewActive: false });
+    }
   };
 
   handleDetailsOnClick = () => {
@@ -233,19 +278,6 @@ class App extends Component {
   render() {
     return (
       <div className="App inactive">
-        {this.state.cityFromAPI && this.state.cityFromAPI.cod === 200 ? (
-          <More
-            click={this.handleOnMoreClick}
-            mouseLeave={this.handleMouseLeave}
-            mouseEnter={this.handleMouseEnter}
-            content={this.state.moreComponentText}
-            city={this.state.confirmedCity}
-            data={this.state.cityFromCoordinatesAPI}
-            active={this.state.moreElementActive}
-            isWeekActive={this.state.isWeekActive}
-          />
-        ) : null}
-
         <div className="App__search-component">
           <SearchInput
             enter={this.handleKeyDown}
@@ -261,6 +293,20 @@ class App extends Component {
             detailsClick={this.handleDetailsOnClick}
             isDetailsActive={this.state.isDetailsActive}
             sunClick={this.handleSunClick}
+          />
+        ) : null}
+        {this.state.cityFromAPI && this.state.cityFromAPI.cod === 200 ? (
+          <More
+            click={this.handleOnMoreClick}
+            mouseLeave={this.handleMouseLeave}
+            mouseEnter={this.handleMouseEnter}
+            content={this.state.moreComponentText}
+            city={this.state.confirmedCity}
+            data={this.state.cityFromCoordinatesAPI}
+            active={this.state.moreElementActive}
+            isWeekActive={this.state.isWeekActive}
+            isSmallScreen={this.state.isSmallScreen}
+            closeClick={this.handleDocumentClick}
           />
         ) : null}
       </div>

@@ -478,3 +478,216 @@ a:hover {
   width: 30px;
   margin-right: 10px;
 }
+
+@media (max-width: 1050px) {
+  .App__more-component.active {
+    left: 5px;
+    width: 390px;
+    height: 460px
+  }
+
+  .App__more-component.active .App__more-component__hours {
+    flex-direction: column;
+    width: 390px;
+  }
+
+  .App__more-component.active .App__more-component__hour {
+    flex-direction: row;
+    border-right: none;
+    border-bottom: solid 1px white;
+    width: 390px;
+  }
+
+  .App__more-component__hour div.hour {
+    margin: 0 5px;
+    font-size: 15px;
+    line-height: 40px;
+    min-width: 40px;
+  }
+
+  .App__more-component__hour div.weather {
+    height: 40px;
+  }
+
+  .App__more-component__hour div.weather p {
+
+    display: none;
+  }
+
+  .App__more-component__hour div.weather img {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+  }
+
+  .App__more-component__hour div.temp img {
+    display: none;
+  }
+
+  .App__more-component__hour div.temp {
+    font-size: 12px;
+    width: 25px;
+    margin: 0 5px 0 10px;
+  }
+
+  .App__more-component__hour div.feels {
+    font-size: 12px;
+    line-height: 40px;
+    width: 40px;
+    margin: 0 5px;
+
+  }
+
+  .App__more-component__hour div.clouds {
+    font-size: 12px;
+    width: 50px;
+  }
+
+  .App__more-component__hour div.clouds img {
+    width: 20px;
+    height: 15px;
+  }
+
+  .App__more-component__hour div.humidity {
+    font-size: 12px;
+    width: 50px;
+  }
+
+  .App__more-component__hour div.humidity img {
+    width: 20px;
+    height: 15px;
+  }
+
+  .App__more-component__hour div.wind {
+    margin: 0 5px;
+    font-size: 12px;
+  }
+
+  .App__more-component__hour div.wind div:first-of-type {
+    padding: 2px;
+  }
+
+  .App__more-component__hour div.pressure {
+    font-size: 12px;
+  }
+
+  div.App__more-component__footer {
+    position: relative;
+    margin: 10px 0 0 0;
+    width: 150px;
+    height: 40px;
+    border: 1px solid white;
+    cursor: pointer;
+  }
+
+  div.App__more-component__footer:hover {
+    background-color: rgb(105, 105, 105);
+  }
+
+  div.App__more-component__footer:active {
+    background-color: rgb(105, 105, 105);
+  }
+
+  div.App__more-component__footer p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 410px) {
+
+
+  div.App {
+    background-color: transparent;
+    box-shadow: none;
+    height: 100vh;
+    width: 360px;
+  }
+
+  div.App__view-time {
+    display: none;
+  }
+
+  div.App__view-title {
+    margin-top: 5px;
+    background-color: transparent;
+    padding: 0;
+    font-size: 15px;
+  }
+
+  .App__view-sun {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 15px;
+  }
+
+  .App__view-sun img {
+    width: 50px;
+  }
+
+  div.App__more-component {
+    position: static;
+    width: 140px;
+    height: 45px;
+
+
+  }
+
+  .App__more-component:hover>p:nth-of-type(2),
+  .App__more-component:hover>p:nth-of-type(3) {
+    opacity: 0;
+  }
+
+  .App__more-component.active {
+    background-color: transparent;
+    box-shadow: none;
+    width: 360px;
+    margin: 0 auto;
+  }
+
+  .App__more-component.active .App__more-component__hours {
+    width: 360px;
+
+  }
+
+  .App__more-component.active .App__more-component__hour {
+    width: 360px;
+  }
+
+  .App__more-component.active div.hour {
+    margin-right: 0;
+  }
+
+  .App__more-component.active div.temp {
+    margin-left: 5px;
+    font-size: 11px;
+  }
+
+  .App__more-component.active div.feels {
+    margin: 0px;
+    font-size: 11px;
+  }
+
+
+  .App__more-component.active div.clouds,
+  .App__more-component.active div.pressure,
+  .App__more-component.active div.wind,
+  .App__more-component.active div.humidity {
+    font-size: 11px;
+  }
+
+  .App__more-component>p:first-of-type {
+    transform: rotate(0deg);
+  }
+
+  .App__view-details {
+    margin-bottom: 10px;
+  }
+
+  .App__view-details.active {
+    position: static;
+  }
+}
