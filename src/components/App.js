@@ -16,7 +16,7 @@ class App extends Component {
     cityFromCoordinatesAPI: null,
     moreComponentText: (
       <>
-        <p>24 / 7</p>
+        <p>24 h</p>
         <p>pogoda</p>
         <p>(kliknij)</p>
       </>
@@ -47,7 +47,7 @@ class App extends Component {
         moreElementActive: false,
         moreComponentText: (
           <>
-            <p>24 / 7</p>
+            <p>24 h</p>
             <p>pogoda</p>
             <p>(kliknij)</p>
           </>
@@ -143,7 +143,7 @@ class App extends Component {
         moreElementActive: false,
         moreComponentText: (
           <>
-            <p>24 / 7</p>
+            <p>24 h</p>
             <p>pogoda</p>
             <p>(kliknij)</p>
           </>
@@ -164,7 +164,7 @@ class App extends Component {
         this.setState({
           moreComponentText: (
             <>
-              <p>24 / 7</p>
+              <p>24 h</p>
               <p>pogoda</p>
               <p>(kliknij)</p>
             </>
@@ -185,7 +185,7 @@ class App extends Component {
         this.setState({
           moreComponentText: (
             <>
-              <p>24 / 7</p>
+              <p>24 h</p>
               <p>pogoda</p>
               <p>(kliknij)</p>
             </>
@@ -227,7 +227,7 @@ class App extends Component {
   };
 
   handleSunClick = () => {
-    console.log("hej");
+    // console.log("test");
   };
 
   render() {
