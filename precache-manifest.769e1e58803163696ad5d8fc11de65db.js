@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "4d54e556fc7531d67c3d",
-    "url": "/PogadaApp/static/css/main.7b2ad2b7.chunk.css"
+    "revision": "b504bdfc3f5b84a78096",
+    "url": "/PogadaApp/static/css/main.53c57005.chunk.css"
   },
   {
-    "revision": "4d54e556fc7531d67c3d",
-    "url": "/PogadaApp/static/js/main.4d54e556.chunk.js"
+    "revision": "b504bdfc3f5b84a78096",
+    "url": "/PogadaApp/static/js/main.b504bdfc.chunk.js"
   },
   {
-    "revision": "2fae8116c4aa66fc33a3",
-    "url": "/PogadaApp/static/js/1.2fae8116.chunk.js"
+    "revision": "65aee3f7fc1d582bb1bb",
+    "url": "/PogadaApp/static/js/1.65aee3f7.chunk.js"
   },
   {
     "revision": "0a3e6f3ac2f920162010",
@@ -24,20 +24,20 @@ self.__precacheManifest = [
     "url": "/PogadaApp/static/media/humidity.09c5ebd1.png"
   },
   {
-    "revision": "955049ccc37c8f1dd6fe1b5329ccd325",
-    "url": "/PogadaApp/static/media/sunrise.955049cc.png"
-  },
-  {
-    "revision": "93a504e3db79e6ab640b245bf2e0db8c",
-    "url": "/PogadaApp/static/media/sunset.93a504e3.png"
-  },
-  {
     "revision": "8501a2deb5d50361e118887754a9ac42",
     "url": "/PogadaApp/static/media/pressure-gauge.8501a2de.png"
   },
   {
     "revision": "7c25ccea71f9fc31f2e9554883d225d9",
     "url": "/PogadaApp/static/media/wind.7c25ccea.png"
+  },
+  {
+    "revision": "955049ccc37c8f1dd6fe1b5329ccd325",
+    "url": "/PogadaApp/static/media/sunrise.955049cc.png"
+  },
+  {
+    "revision": "93a504e3db79e6ab640b245bf2e0db8c",
+    "url": "/PogadaApp/static/media/sunset.93a504e3.png"
   },
   {
     "revision": "1c75d0498483ab169550bb17c4d55867",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/PogadaApp/static/media/fog.ef7c8c8b.jpg"
   },
   {
-    "revision": "1cac9268a793c9061070094511dbecdd",
+    "revision": "0ab6704374caebc4ece2496caacab797",
     "url": "/PogadaApp/index.html"
   }
 ];
