@@ -210,9 +210,10 @@ class App extends Component {
           this.setState({ cityFromCoordinatesAPI: data });
         });
     }
-    if (this.state.moreElementActive) {
-      this.setState({ isWeekActive: !this.state.isWeekActive });
-    }
+    // if (this.state.moreElementActive) {
+    //   this.setState({ isWeekActive: !this.state.isWeekActive });
+    // }
+    // ukrycie obsługi widoku tygodniowej prognozy
 
     if (this.state.isDetailsActive) {
       document.querySelector(".App__view-details").classList.remove("active");

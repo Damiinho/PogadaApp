@@ -18,7 +18,7 @@ const More = (props) => {
           <div className="App__more-component__title">
             {props.isWeekActive
               ? "TYDZIEŃ (KLIKNIJ ABY ZMIENIĆ NA DOBĘ)"
-              : "DOBA (KLIKNIJ ABY ZMIENIĆ NA TYDZIEŃ)"}
+              : "PROGNOZA NA DOBĘ"}
           </div>
           {props.isWeekActive ? (
             <div className="App__more-component__days">
