@@ -66,6 +66,65 @@ const WeatherView = (props) => {
     };
     weatherCondition = weatherCondition();
 
+    const Pressure = () =>
+      props.isDetailsActive ? (
+        <div className="App__view-pressure">
+          <img src={pressureIMG} alt="" /> {props.data.main.pressure} hPa –
+          ciśnienie
+        </div>
+      ) : (
+        <div className="App__view-pressure">
+          <img src={pressureIMG} alt="" /> {props.data.main.pressure} hPa
+        </div>
+      );
+
+    const Windspeed = () =>
+      props.isDetailsActive ? (
+        <>
+          <div className="App__view-windspeed">
+            <img src={windIMG} alt="wind" /> {props.data.wind.speed} m/s – wiatr
+            {"    "}
+            <p
+              style={{
+                transform: `rotate(${props.data.wind.deg}deg)`,
+              }}
+            >
+              🢁
+            </p>
+          </div>
+        </>
+      ) : (
+        <div className="App__view-windspeed">
+          <img src={windIMG} alt="wind" /> {props.data.wind.speed} m/s
+        </div>
+      );
+
+    const Clouds = () =>
+      props.isDetailsActive ? (
+        <div className="App__view-clouds">
+          <img src={cloudsIMG} alt="clouds" />
+          {props.data.clouds.all}% – zachmurzenie
+        </div>
+      ) : (
+        <div className="App__view-clouds">
+          <img src={cloudsIMG} alt="clouds" />
+          {props.data.clouds.all}%
+        </div>
+      );
+
+    const Humidity = () =>
+      props.isDetailsActive ? (
+        <div className="App__view-humidity">
+          <img src={humidityIMG} alt="humidity" />
+          {props.data.main.humidity}% – wilgotność
+        </div>
+      ) : (
+        <div className="App__view-humidity">
+          <img src={humidityIMG} alt="humidity" />
+          {props.data.main.humidity}%
+        </div>
+      );
+
     return (
       <div className="App__view">
         <Time now={now} />
@@ -73,7 +132,6 @@ const WeatherView = (props) => {
           <h1>{props.city.toUpperCase()}</h1>
           <Coordinates lat={props.data.coord.lat} lon={props.data.coord.lon} />
         </div>
-        {}
         <div className="App__view-data">
           <div className="App__view-data-general">
             <div>
@@ -85,15 +143,27 @@ const WeatherView = (props) => {
               <div>{weatherCondition}</div>
             </div>
           </div>
-          <div className="App__view-sun">
+          <div className="App__view-sun" onClick={props.sunClick}>
             <Sunrise sunrise={sunriseLocal} />
             <Sunset sunset={sunsetLocal} />
           </div>
-          <div className="App__view-details">
-            <Pressure pressure={props.data.main.pressure} />
-            <Windspeed speed={props.data.wind.speed} />
-            <Clouds all={props.data.clouds.all} />
-            <Humidity humidity={props.data.main.humidity} />
+
+          <div className="App__view-details" onClick={props.detailsClick}>
+            {props.isDetailsActive ? (
+              <>
+                <Clouds />
+                <Windspeed />
+                <Humidity />
+                <Pressure />
+              </>
+            ) : (
+              <>
+                <Clouds />
+                <Windspeed />
+                <Humidity />
+                <Pressure />
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -173,40 +243,6 @@ const Sunset = (props) => {
   return (
     <div className="App__view-sunset">
       <img src={sunsetIMG} alt="sunset" /> <div>{props.sunset}</div>
-    </div>
-  );
-};
-
-const Pressure = (props) => {
-  return (
-    <div className="App__view-pressure">
-      <img src={pressureIMG} alt="" /> {props.pressure} hPa
-    </div>
-  );
-};
-
-const Windspeed = (props) => {
-  return (
-    <div className="App__view-windspeed">
-      <img src={windIMG} alt="wind" /> {props.speed} m/s
-    </div>
-  );
-};
-
-const Clouds = (props) => {
-  return (
-    <div className="App__view-clouds">
-      <img src={cloudsIMG} alt="clouds" />
-      {props.all}%
-    </div>
-  );
-};
-
-const Humidity = (props) => {
-  return (
-    <div className="App__view-humidity">
-      <img src={humidityIMG} alt="humidity" />
-      {props.humidity}%
     </div>
   );
 };

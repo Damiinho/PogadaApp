@@ -24,6 +24,7 @@ class App extends Component {
     moreElementActive: false,
     isElementHover: false,
     isWeekActive: false,
+    isDetailsActive: false,
   };
 
   componentDidMount() {
@@ -53,6 +54,13 @@ class App extends Component {
         ),
       });
       document.querySelector(".App__more-component").classList.remove("active");
+    }
+    if (
+      this.state.isDetailsActive &&
+      e.target === document.getElementById("root")
+    ) {
+      document.querySelector(".App__view-details").classList.remove("active");
+      this.setState({ isDetailsActive: false });
     }
   };
 
@@ -205,6 +213,20 @@ class App extends Component {
     if (this.state.moreElementActive) {
       this.setState({ isWeekActive: !this.state.isWeekActive });
     }
+
+    if (this.state.isDetailsActive) {
+      document.querySelector(".App__view-details").classList.remove("active");
+      this.setState({ isDetailsActive: false });
+    }
+  };
+
+  handleDetailsOnClick = () => {
+    document.querySelector(".App__view-details").classList.toggle("active");
+    this.setState({ isDetailsActive: !this.state.isDetailsActive });
+  };
+
+  handleSunClick = () => {
+    console.log("hej");
   };
 
   render() {
@@ -235,6 +257,9 @@ class App extends Component {
           <WeatherView
             data={this.state.cityFromAPI}
             city={this.state.confirmedCity}
+            detailsClick={this.handleDetailsOnClick}
+            isDetailsActive={this.state.isDetailsActive}
+            sunClick={this.handleSunClick}
           />
         ) : null}
       </div>

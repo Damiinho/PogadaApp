@@ -318,6 +318,26 @@ a:hover {
   padding-right: 4px;
 }
 
+
+.App__more-component__days {
+  display: flex;
+  width: 800px;
+  margin-top: 15px;
+}
+
+.App__more-component__day {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  font-size: 18px;
+  border-right: solid 1px white;
+}
+
+.App__more-component__day img {
+  width: 24px;
+}
+
+
 .App__more-component__footer {
   font-size: 17px;
 }
@@ -395,6 +415,20 @@ a:hover {
   border-radius: 10px;
   padding: 0 15px 15px 15px;
   margin-bottom: 30px;
+  transition: 0.3s;
+}
+
+.App__view-details:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 10px 2px rgba(66, 68, 90, 1);
+}
+
+.App__view-details.active {
+  position: relative;
+  top: -100px;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.644);
 }
 
 .App__view-pressure {

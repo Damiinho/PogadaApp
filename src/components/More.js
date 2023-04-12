@@ -21,7 +21,11 @@ const More = (props) => {
               : "DOBA (KLIKNIJ ABY ZMIENIĆ NA TYDZIEŃ)"}
           </div>
           {props.isWeekActive ? (
-            "tu będzie widok tygodnia"
+            <div className="App__more-component__days">
+              {dataForDayNightItem.map((item, index) => (
+                <DayNight key={index} data={item} />
+              ))}
+            </div>
           ) : (
             <div className="App__more-component__hours">
               {props.data.list.slice(0, 8).map((item, index) => (
@@ -54,6 +58,21 @@ const Hour = (props) => {
       <Humidity humidity={props.data.main.humidity} />
       <Wind wind={props.data.wind.speed} deg={props.data.wind.deg} />
       <Pressure pressure={props.data.main.pressure} />
+    </div>
+  );
+};
+
+const dataForDayNightItem = [
+  { id: 0, temp: 1.2, humidity: 80 },
+  { id: 1, temp: 2.2, humidity: 10 },
+  { id: 3, temp: 1.2, humidity: 99 },
+];
+
+const DayNight = (props) => {
+  return (
+    <div className="App__more-component__day">
+      <Temp temp={props.data.temp} />
+      <Humidity humidity={props.data.humidity} />
     </div>
   );
 };
