@@ -45,10 +45,35 @@ class App extends Component {
   }
 
   handleResize = () => {
-    this.setState({
-      isSmallScreen: window.innerWidth < 1050,
-      isMobileScreen: window.innerWidth < 410,
-    });
+    setTimeout(
+      () => {
+        this.setState({
+          isSmallScreen: window.innerWidth < 1050,
+          isMobileScreen: window.innerWidth < 410,
+        });
+
+        if (this.state.moreElementActive) {
+        }
+
+        if (
+          !this.state.isMobileScreen &&
+          document.querySelector(".App__view")
+        ) {
+          document.querySelector(".App__view").style.display = "block";
+          this.setState({ isAppViewActive: true });
+        }
+        if (
+          this.state.isMobileScreen &&
+          this.state.moreElementActive &&
+          document.querySelector(".App__view")
+        ) {
+          document.querySelector(".App__view").style.display = "none";
+          this.setState({ isAppViewActive: false });
+        }
+      },
+
+      300
+    );
   };
 
   handleDocumentClick = (e) => {

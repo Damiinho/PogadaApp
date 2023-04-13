@@ -691,3 +691,59 @@ a:hover {
     position: static;
   }
 }
+
+@media (max-width: 359px) {
+  div.App {
+    width: 280px;
+  }
+
+
+  div.App__search-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div.App__view-title {
+    font-size: 12px;
+  }
+
+  div.App__view-title h1 {
+    line-height: 28px;
+  }
+
+  .App__input input {
+    margin-right: 0;
+  }
+
+  div.App__view {
+    width: 280px;
+    min-width: auto;
+  }
+
+  div.App__view-data {
+    width: 280px;
+  }
+
+  .App__more-component.active {
+    width: 280px;
+    height: 500px;
+  }
+
+  .App__more-component.active .App__more-component__hours {
+    width: 280px;
+
+  }
+
+  .App__more-component.active .App__more-component__hour {
+    width: 280px;
+  }
+
+  .App__more-component.active div.feels,
+  .App__more-component.active div.humidity {
+    display: none
+  }
+
+
+}
