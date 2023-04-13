@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "e987099e12ad32449965",
-    "url": "/PogadaApp/static/css/main.7f44ee2e.chunk.css"
+    "revision": "fba8811452ea144efaea",
+    "url": "/PogadaApp/static/css/main.9cbeea3f.chunk.css"
   },
   {
-    "revision": "e987099e12ad32449965",
-    "url": "/PogadaApp/static/js/main.e987099e.chunk.js"
+    "revision": "fba8811452ea144efaea",
+    "url": "/PogadaApp/static/js/main.fba88114.chunk.js"
   },
   {
     "revision": "65aee3f7fc1d582bb1bb",
@@ -44,16 +44,16 @@ self.__precacheManifest = [
     "url": "/PogadaApp/static/media/thunderstorm.1c75d049.jpg"
   },
   {
+    "revision": "70aac00f7a226173ce4172139345cd47",
+    "url": "/PogadaApp/static/media/squall.70aac00f.jpg"
+  },
+  {
     "revision": "e08120d2aeaceea385de39f88a396577",
     "url": "/PogadaApp/static/media/dust.e08120d2.jpg"
   },
   {
     "revision": "eb8311eb2cd502f1d3455970ddc2b509",
     "url": "/PogadaApp/static/media/clouds.eb8311eb.jpg"
-  },
-  {
-    "revision": "70aac00f7a226173ce4172139345cd47",
-    "url": "/PogadaApp/static/media/squall.70aac00f.jpg"
   },
   {
     "revision": "0ca0231c336a6dc09a69b6db1de65ff0",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/PogadaApp/static/media/fog.ef7c8c8b.jpg"
   },
   {
-    "revision": "d481aa624157f2f2c5bf20f6135f651b",
+    "revision": "8cd96ca415e884ab4eb38523323a68f5",
     "url": "/PogadaApp/index.html"
   }
 ];

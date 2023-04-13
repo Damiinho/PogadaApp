@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/PogadaApp/precache-manifest.0f2962f8380ed45bb71a1b32c07b8e32.js"
+  "/PogadaApp/precache-manifest.ded3293136eba367c476f73769249d19.js"
 );
 
 workbox.clientsClaim();
