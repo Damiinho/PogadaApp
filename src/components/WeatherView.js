@@ -130,6 +130,11 @@ const WeatherView = (props) => {
         <Time now={now} />
         <div className="App__view-title">
           <h1>{props.city.toUpperCase()}</h1>
+          {props.foundCity ? (
+            <p>
+              ({props.foundCity.country}, {props.foundCity.state})
+            </p>
+          ) : null}
           <Coordinates lat={props.data.coord.lat} lon={props.data.coord.lon} />
         </div>
         <div className="App__view-data">

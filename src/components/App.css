@@ -371,6 +371,10 @@ a:hover {
   line-height: 43px;
 }
 
+.App__view-title p {
+  font-size: 12px;
+}
+
 .App__view-data {
   display: flex;
   flex-direction: column;

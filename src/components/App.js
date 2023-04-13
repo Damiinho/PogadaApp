@@ -13,6 +13,7 @@ class App extends Component {
     confirmedCity: "",
     lat: null,
     lon: null,
+    foundCity: null,
     cityFromCoordinatesAPI: null,
     moreComponentText: (
       <>
@@ -149,20 +150,20 @@ class App extends Component {
         if (h1Element.offsetHeight > 1 && !this.state.isMobileScreen) {
           appViewElement.style.opacity = "1";
           if (generalSecondDivElement.offsetHeight > 20) {
-            appElement.style.height = "622px";
+            appElement.style.height = "649px";
           }
         }
 
         if (h1Element.offsetHeight > 43 && !this.state.isMobileScreen) {
-          appElement.style.height = "643px";
+          appElement.style.height = "670px";
           if (generalSecondDivElement.offsetHeight > 22) {
-            appElement.style.height = "665px";
+            appElement.style.height = "692px";
           }
         }
         if (h1Element.offsetHeight > 86 && !this.state.isMobileScreen) {
-          appElement.style.height = "686px";
+          appElement.style.height = "714px";
           if (generalSecondDivElement.offsetHeight > 22) {
-            appElement.style.height = "708px";
+            appElement.style.height = "735px";
           }
         }
       } else {
@@ -198,7 +199,22 @@ class App extends Component {
       .then((response) => response.json())
       .then((data) => {
         if (data.length > 0) {
-          this.setState({ lat: data[0].lat, lon: data[0].lon });
+          this.setState({
+            lat: data[0].lat,
+            lon: data[0].lon,
+            foundCity: data[0],
+          });
+          if (data[0].lat) {
+            const API = `https://api.openweathermap.org/data/2.5/forecast?lat=${
+              data[0].lat
+            }&lon=${data[0].lon}&appid=${APIKey}&units=metric`;
+
+            fetch(API)
+              .then((response) => response.json())
+              .then((data) => {
+                this.setState({ cityFromCoordinatesAPI: data });
+              });
+          }
         } else this.setState({ lat: null, lon: null });
       });
 
@@ -266,15 +282,6 @@ class App extends Component {
     if (!this.state.moreElementActive) {
       document.querySelector(".App__more-component").classList.add("active");
       this.setState({ moreElementActive: true });
-      const API = `https://api.openweathermap.org/data/2.5/forecast?lat=${
-        this.state.lat
-      }&lon=${this.state.lon}&appid=${APIKey}&units=metric`;
-
-      fetch(API)
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({ cityFromCoordinatesAPI: data });
-        });
     }
     // if (this.state.moreElementActive) {
     //   this.setState({ isWeekActive: !this.state.isWeekActive });
@@ -314,6 +321,7 @@ class App extends Component {
         {this.state.cityFromAPI ? (
           <WeatherView
             data={this.state.cityFromAPI}
+            foundCity={this.state.foundCity}
             city={this.state.confirmedCity}
             detailsClick={this.handleDetailsOnClick}
             isDetailsActive={this.state.isDetailsActive}
