@@ -1,7 +1,7 @@
 {
-  "main.css": "/PogadaApp/static/css/main.9cbeea3f.chunk.css",
-  "main.js": "/PogadaApp/static/js/main.fba88114.chunk.js",
-  "main.js.map": "/PogadaApp/static/js/main.fba88114.chunk.js.map",
+  "main.css": "/PogadaApp/static/css/main.9363cba0.chunk.css",
+  "main.js": "/PogadaApp/static/js/main.c514b5df.chunk.js",
+  "main.js.map": "/PogadaApp/static/js/main.c514b5df.chunk.js.map",
   "static/js/1.65aee3f7.chunk.js": "/PogadaApp/static/js/1.65aee3f7.chunk.js",
   "static/js/1.65aee3f7.chunk.js.map": "/PogadaApp/static/js/1.65aee3f7.chunk.js.map",
   "runtime~main.js": "/PogadaApp/static/js/runtime~main.0a3e6f3a.js",
@@ -13,8 +13,8 @@
   "static/media/sunrise.png": "/PogadaApp/static/media/sunrise.955049cc.png",
   "static/media/sunset.png": "/PogadaApp/static/media/sunset.93a504e3.png",
   "static/media/App.css": "/PogadaApp/static/media/fog.ef7c8c8b.jpg",
-  "static/css/main.9cbeea3f.chunk.css.map": "/PogadaApp/static/css/main.9cbeea3f.chunk.css.map",
+  "static/css/main.9363cba0.chunk.css.map": "/PogadaApp/static/css/main.9363cba0.chunk.css.map",
   "index.html": "/PogadaApp/index.html",
-  "precache-manifest.ded3293136eba367c476f73769249d19.js": "/PogadaApp/precache-manifest.ded3293136eba367c476f73769249d19.js",
+  "precache-manifest.4ba172845cea3995d56387166a88c462.js": "/PogadaApp/precache-manifest.4ba172845cea3995d56387166a88c462.js",
   "service-worker.js": "/PogadaApp/service-worker.js"
 }
